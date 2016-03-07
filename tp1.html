@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Compteur</title>
+
+		<script>
+		
+			var intervalID;
+			var compteur = 10;			
+
+			function compt_A_rebours()
+			{
+				intervalID = setInterval(compte, 1000);	// On répète la fonction compte toutes les 1 secondes.
+			}
+
+			function compte()
+			{
+				if (compteur >= 0) 
+				{
+					division = document.getElementById('mydiv');
+					division.innerHTML = compteur; // On affiche le compteur dans la div créée.
+					compteur -=1 ;
+				}
+				else
+				{
+					clearInterval(intervalID);	// Lorsque compteur est null on cesse de répéter la fonction.
+				}	
+			}
+
+		</script>
+	</head>
+	<body onload = "compt_A_rebours()">
+	<div id="mydiv"></div>
+	</body>
+</html>
