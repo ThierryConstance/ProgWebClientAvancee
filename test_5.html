@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test_5</title>
+		<style>
+			.carre
+			{
+			 	position : relative;
+				background : red;
+				width : 100px;
+				height : 100px;  
+			}
+		</style>
+	</head>
+	<body>
+		<div id='animatedElem' class='carre'></div>
+	</body>
+	<script type="text/javascript">
+
+		var elem = document.getElementById("animatedElem");
+		var start = null;
+		var deltaT;
+
+		function step(timestamp) 
+		{
+			if (start === null) start = timestamp;
+    		deltaT = timestamp - start;
+	    	// do not render frame when deltaT is too high
+    		if ( deltaT < 2000 ) 
+    		{
+    	    	setTimeout(function()
+    	    	{
+  					elem.style.left = Math.min(deltaT/10, 200) + "px";
+					requestAnimationFrame( step, elem );    	    	
+    	    	}
+    	    	, 10);
+    		}
+		}
+		
+		requestAnimationFrame( step, elem );
+
+	</script>
+</html>
