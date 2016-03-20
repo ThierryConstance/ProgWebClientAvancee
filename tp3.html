@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.carre{
+			 	position : relative;
+				background : red;
+				width : 50px;
+				height : 50px;  
+			}
+		</style>
+		<script type="text/javascript">
+				
+		var id;
+		var pos = 10;		
+		
+		function tempsdepause()
+		{
+			setTimeout(vitesse, 2000);	//On attend 2 secondes avant de charger la fonction vitesse.
+		}		
+
+		function vitesse() 
+		{
+			id = setInterval(position, 100);	//Tous les dixièmes de secondes on lance la fonction position.
+		}
+
+		function position()
+		{
+			canvas = document.getElementById("mycanvas");
+			canvas.style.position = "absolute";
+			canvas.style.left = pos + "px";	//On décale la position du carré rouge de 10 pixels vers la droite.
+			pos += 10;
+			if (pos === 1200)	//Lorsqu'on atteind la position 1200 pixels, on arrète l'intervale de la fonction vitesse.
+			{
+				clearInterval(id);
+			}
+		   
+		}
+		
+  		</script>
+ 	</head>
+ 	<body onload="tempsdepause()">
+		<div id="mycanvas" class="carre" width="300" height="300"></div>
+	</body>
+</html>
