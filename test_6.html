@@ -10,6 +10,7 @@
 	
 		var x = 0;
 		var img = new Image();
+  		img.src = 'coin-sprite-animation.png';
 		
 		function updateGame()
 		{
@@ -25,13 +26,8 @@
 		function drawGame()
 		{
 			var ctx = document.getElementById('canvas').getContext('2d');
-		  	img.onload = function()
-		  	{
-		  			ctx.fillStyle = "white";
- 					ctx.fillRect (0, 0, 100, 100);
-					ctx.drawImage(img,x,0,100,100,0,0,100,100);
-			}
-  			img.src = 'coin-sprite-animation.png';
+  			ctx.clearRect(0,0,100,100);
+			ctx.drawImage(img,x,0,100,100,0,0,100,100);
 		}
 		
 		var mainloop = function() 
